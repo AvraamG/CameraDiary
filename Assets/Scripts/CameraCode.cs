@@ -16,6 +16,7 @@ public class CameraCode : MonoBehaviour
 {
 	void Update()
 	{
+		/*
 		if (Input.GetMouseButtonDown(0))
 		{
 			if (Input.mousePosition.x < Screen.width / 3)
@@ -43,7 +44,22 @@ public class CameraCode : MonoBehaviour
 				}
 			}
 		}
+		*/
 	}
+
+	public void TakeScreenshotAndSaveFunction()
+	{
+		StartCoroutine(TakeScreenshotAndSave());
+	}
+
+	public void PickImage512()
+	{
+		if (NativeGallery.IsMediaPickerBusy())
+			return;
+
+		PickImage(512);
+	}
+
 
 	private IEnumerator TakeScreenshotAndSave()
 	{
@@ -116,7 +132,7 @@ public class CameraCode : MonoBehaviour
 	}
 
 	// Example code doesn't use this function but it is here for reference
-	private void PickImageOrVideo()
+	public void PickImageOrVideo()
 	{
 		if (NativeGallery.CanSelectMultipleMediaTypesFromGallery())
 		{
